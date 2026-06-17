@@ -13,7 +13,6 @@ const routes = [
   { id: 'team', label: 'Team' },
   { id: 'product', label: 'Product' },
   { id: 'contact', label: 'Contact' },
-  { id: 'buy', label: 'Buy' },
   { id: 'login', label: 'Login' },
 ];
 
