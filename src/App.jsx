@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import skiGogglesModelUrl from '../ski_goggles.glb?url';
-import credentialsData from '../credentials.json';
+import credentialsData from 'credentials.json';
 import './App.css';
 
 const routes = [
