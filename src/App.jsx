@@ -121,6 +121,7 @@ const team = [
   ['Sourya Mukalla', 'Web Design and Development', 'Codes the website, online store, and customer accounts with a focus on clarity and performance.'],
   ['Laasya Bollempalli', 'R&D and Prototyping and Testing', 'Leads product development, testing, and iteration with a focus on real-world performance and reliability.'],
   ['Saanvi Goudar', 'Business Operations', 'Manages supply chain, customer support, and day-to-day operations with a focus on efficiency and care.'],
+  ['Nedir Fale', 'Brand and Visual Design', 'Shapes the visual identity, packaging, and product aesthetics with a focus on simplicity and cohesion.']
 ];
 
 function formatCurrency(value) {
