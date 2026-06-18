@@ -63,7 +63,7 @@ a {
 
 .header-inner {
   display: grid;
-  grid-template-columns: auto minmax(280px, 1.1fr) auto auto;
+  grid-template-columns: auto minmax(220px, 1fr) auto auto;
   align-items: center;
   gap: 1rem;
   width: min(1320px, calc(100% - 32px));
@@ -110,12 +110,28 @@ textarea {
   display: flex;
   align-items: center;
   gap: 0.7rem;
+  width: 100%;
+  min-width: 0;
   min-height: 48px;
   padding: 0 1rem;
   border: 1px solid rgb(243 250 255 / 0.08);
   border-radius: 999px;
   background: rgb(243 250 255 / 0.05);
   color: var(--lavender-gray);
+}
+
+.header-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--alice-blue);
+}
+
+.header-search input::placeholder {
+  color: var(--lavender-gray);
+  opacity: 1;
 }
 
 .search-icon {
@@ -126,6 +142,7 @@ textarea {
 .header-actions {
   display: flex;
   align-items: center;
+  justify-self: end;
   gap: 0.65rem;
 }
 
@@ -143,9 +160,16 @@ textarea {
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  max-width: 100%;
   min-height: 48px;
   padding: 0.3rem;
   border-radius: 999px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-links button,
@@ -289,7 +313,7 @@ h3 {
 
 h1 {
   max-width: 11ch;
-  font-size: clamp(4rem, 6.2vw, 6.8rem);
+  font-size: clamp(3rem, 10vw, 6.8rem);
 }
 
 .hero-text {
@@ -1143,6 +1167,23 @@ h1 {
   gap: 0.6rem;
 }
 
+.empty-results {
+  margin-top: 1.6rem;
+  padding: 1.5rem;
+  border: 1px solid rgb(243 250 255 / 0.18);
+  border-radius: 12px;
+  background: rgb(0 6 42 / 0.5);
+}
+
+.empty-results h3 {
+  font-size: 1.4rem;
+}
+
+.empty-results p {
+  margin: 0.6rem 0 0;
+  color: var(--lavender-gray);
+}
+
 .product-image {
   display: block;
   width: 100%;
@@ -1307,7 +1348,7 @@ h1 {
 .detail-preview-image {
   display: block;
   width: 100%;
-  height: min(520px, 52vw);
+  height: clamp(320px, 52vw, 520px);
   min-height: 320px;
   border-radius: 18px;
   border: 1px solid rgb(243 250 255 / 0.12);
@@ -1413,13 +1454,29 @@ h1 {
   font-weight: 800;
 }
 
+@media (max-width: 1120px) {
+  .header-inner {
+    grid-template-columns: auto minmax(180px, 1fr) auto;
+  }
+
+  .nav-links {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+  }
+}
+
 @media (max-width: 860px) {
   .site-nav {
     grid-template-columns: 1fr auto;
   }
 
-  .nav-links {
-    display: none;
+  .header-inner {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.75rem;
+  }
+
+  .header-search {
+    min-height: 44px;
   }
 
   .hero-section,
@@ -1528,13 +1585,63 @@ h1 {
     padding-inline: 0.7rem;
   }
 
+  .header-inner {
+    grid-template-columns: auto 1fr auto;
+    width: min(100% - 20px, 1120px);
+    gap: 0.55rem;
+    padding: 0.65rem 0;
+  }
+
+  .header-search {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    min-height: 42px;
+    padding: 0 0.8rem;
+    order: 3;
+  }
+
+  .header-search input {
+    font-size: 0.9rem;
+  }
+
+  .nav-links {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    min-height: 42px;
+    padding: 0.25rem;
+  }
+
+  .nav-links button {
+    flex: 0 0 auto;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.84rem;
+  }
+
+  .cart-button {
+    min-height: 42px;
+    padding: 0.55rem 0.65rem;
+  }
+
+  .cart-button > span:nth-child(2) {
+    display: none;
+  }
+
   .hero-section,
   .stats-band,
   .feature-section,
-  .drop-section {
+  .drop-section,
+  .content-page {
     width: min(100% - 20px, 1120px);
   }
 
+  .hero-actions,
+  .product-card-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions button,
+  .product-card-actions button,
   .hero-actions a {
     width: 100%;
   }
@@ -1546,10 +1653,6 @@ h1 {
     grid-template-columns: 1fr;
   }
 
-  .header-inner {
-    grid-template-columns: 1fr auto;
-  }
-
   .cart-item {
     grid-template-columns: 1fr;
   }
@@ -1558,13 +1661,7 @@ h1 {
     justify-content: flex-start;
   }
 
-  .header-search,
-  .nav-links {
-    display: none;
-  }
-
   .content-page {
-    width: min(100% - 20px, 1120px);
     padding: 3rem 0 4rem;
   }
 

@@ -298,7 +298,12 @@ function SkiGoggleViewer() {
   return <div className="model-canvas" ref={mountRef} aria-hidden="true" />;
 }
 
-function Header({ activeRoute, cartCount, navigate }) {
+function Header({ activeRoute, cartCount, navigate, searchQuery, setSearchQuery }) {
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    navigate('product');
+  };
+
   return (
     <header className="site-header">
       <div className="header-inner">
@@ -307,10 +312,16 @@ function Header({ activeRoute, cartCount, navigate }) {
           <span>Simplicity</span>
         </button>
 
-        <div className="header-search">
+        <form className="header-search" onSubmit={handleSearchSubmit} role="search">
           <span className="search-icon">⌕</span>
-          <span>Search gear, accessories, and collections</span>
-        </div>
+          <input
+            type="search"
+            aria-label="Search products"
+            placeholder="Search gear, accessories, and collections"
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+          />
+        </form>
 
         <nav className="nav-links" aria-label="Main navigation">
           {routes.map((item) => (
@@ -465,7 +476,21 @@ function TeamPage() {
   );
 }
 
-function ProductPage({ navigate, addToCart }) {
+function ProductPage({ navigate, addToCart, searchQuery }) {
+  const normalizedSearch = searchQuery.trim().toLowerCase();
+  const filteredProducts = normalizedSearch
+    ? products.filter((product) => (
+      [
+        product.name,
+        product.color,
+        product.badge,
+        product.description,
+        product.category,
+        ...product.options.map((option) => option.name),
+      ].some((value) => value.toLowerCase().includes(normalizedSearch))
+    ))
+    : products;
+
   return (
     <>
       <section className="content-page product-detail">
@@ -498,10 +523,15 @@ function ProductPage({ navigate, addToCart }) {
       <section className="feature-section">
         <div className="section-heading">
           <p className="eyebrow">Featured collection</p>
-          <h2>More gear for pool days, open-water sessions, and recovery.</h2>
+          <h2>
+            {normalizedSearch
+              ? `Search results for "${searchQuery.trim()}"`
+              : 'More gear for pool days, open-water sessions, and recovery.'}
+          </h2>
         </div>
-        <div className="catalog-grid product-grid">
-          {products.map((product) => (
+        {filteredProducts.length ? (
+          <div className="catalog-grid product-grid">
+            {filteredProducts.map((product) => (
             <article className="product-card" key={product.id}>
               <img className="product-image" src={product.image} alt={product.name} />
               <p>{product.badge}</p>
@@ -518,8 +548,14 @@ function ProductPage({ navigate, addToCart }) {
                 </button>
               </div>
             </article>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="empty-results">
+            <h3>No products found</h3>
+            <p>Try searching for mask, cap, tracker, open water, or accessories.</p>
+          </div>
+        )}
       </section>
 
       <FeatureSection />
@@ -899,6 +935,7 @@ function App() {
   const [route, navigate] = useHashRoute();
   const [cart, setCart] = useState([]);
   const [orderMessage, setOrderMessage] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const addToCart = (product) => {
     setCart((current) => {
@@ -948,7 +985,13 @@ function App() {
 
   return (
     <main className="page-shell">
-      <Header activeRoute={activeRoute} cartCount={cartCount} navigate={navigate} />
+      <Header
+        activeRoute={activeRoute}
+        cartCount={cartCount}
+        navigate={navigate}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
       {activeRoute === 'home' && <HomePage navigate={navigate} addToCart={addToCart} />}
       {activeRoute === 'mission' && <MissionPage />}
       {activeRoute === 'team' && <TeamPage />}
@@ -959,7 +1002,7 @@ function App() {
           navigate={navigate}
         />
       ) : activeRoute === 'product' ? (
-        <ProductPage navigate={navigate} addToCart={addToCart} />
+        <ProductPage navigate={navigate} addToCart={addToCart} searchQuery={searchQuery} />
       ) : null}
       {activeRoute === 'contact' && <ContactPage />}
       {activeRoute === 'login' && <LoginPage navigate={navigate} />}
