@@ -891,7 +891,7 @@ function CheckoutPage({ cart, subtotal, navigate, updateQuantity, onPlaceOrder, 
               <input inputMode="numeric" placeholder="123" />
             </label>
           </div>
-          <button className="primary-button" type="submit" disabled={!cart.length}>
+          <button className="primary-button pill-button" type="submit" disabled={!cart.length}>
             Place Order
           </button>
           {orderMessage ? <p className="order-success">{orderMessage}</p> : null}
@@ -910,7 +910,7 @@ function CheckoutPage({ cart, subtotal, navigate, updateQuantity, onPlaceOrder, 
             {cart.length === 0 ? (
               <>
                 <p className="empty-cart">Your cart is empty.</p>
-                <button className="secondary-button" type="button" onClick={() => navigate('product')}>Continue shopping</button>
+                <button className="secondary-button pill-button" type="button" onClick={() => navigate('product')}>Continue shopping</button>
               </>
             ) : (
               <>
