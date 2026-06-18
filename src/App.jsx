@@ -4,7 +4,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import skiGogglesModelUrl from '../ski_goggles.glb?url';
-import credentialsData from 'credentials.json';
+import credentialsData from './credentials.json';
 import './App.css';
 
 const routes = [
@@ -21,10 +21,11 @@ const products = [
     id: 'velocity-mask',
     name: 'Velocity Mask',
     color: 'Baltic Blue',
-    price: 74,
+    price: 41.99,
     badge: 'Best seller',
     description: 'Wide ski-goggle vision, locking suction seal, attached swim cap, and a corner lap stopwatch.',
     category: 'Training',
+    image: '/productimages/velocitymask.png',
     options: [
       { name: 'Baltic Blue', hex: '#38618C' },
       { name: 'Arctic White', hex: '#E9F4FF' },
@@ -39,6 +40,7 @@ const products = [
     badge: 'Race kit',
     description: 'Velocity Mask with mirrored lens, spare gasket, hard case, and waterproof charging puck.',
     category: 'Performance',
+    image: '/productimages/velocitypro.png',
     options: [
       { name: 'Cool Sky', hex: '#35A7FF' },
       { name: 'Silver Mist', hex: '#D9E4F4' },
@@ -53,6 +55,7 @@ const products = [
     badge: 'Accessory',
     description: 'Replacement attached cap liner and two soft suction gaskets for high-mileage training.',
     category: 'Accessories',
+    image: '/productimages/Capseal.png',
     options: [
       { name: 'Lavender Gray', hex: '#949EBD' },
       { name: 'Cloud Pink', hex: '#F6D5E8' },
@@ -67,6 +70,7 @@ const products = [
     badge: 'New',
     description: 'A lightweight wrist band that syncs your splits, pace, and rest intervals to your phone.',
     category: 'Training',
+    image: '/productimages/laptracker.png',
     options: [
       { name: 'Ocean Pearl', hex: '#A7D7EC' },
       { name: 'Coral', hex: '#FF7B7B' },
@@ -81,6 +85,7 @@ const products = [
     badge: 'Popular',
     description: 'A travel-ready setup with anti-fog lenses, extra gasket, and secure carry case.',
     category: 'Adventure',
+    image: '/productimages/openwaterkit.png',
     options: [
       { name: 'Storm Gray', hex: '#7B869D' },
       { name: 'Sunset Orange', hex: '#FF8A5B' },
@@ -95,6 +100,7 @@ const products = [
     badge: 'Bundle',
     description: 'A quick-dry towel and storage sleeve designed to keep your gear organized between laps.',
     category: 'Accessories',
+    image: '/productimages/drycoatpack.png',
     options: [
       { name: 'Mist White', hex: '#F4F7FA' },
       { name: 'Seafoam', hex: '#B7E7D6' },
@@ -320,7 +326,7 @@ function Header({ activeRoute, cartCount, navigate }) {
         </nav>
 
         <div className="header-actions">
-          <button className="cart-button" type="button" onClick={() => navigate('buy')}>
+          <button className="cart-button" type="button" onClick={() => navigate('checkout')}>
             <span className="cart-icon">🛒</span>
             <span>Cart</span>
             <span className="cart-count">{cartCount}</span>
@@ -361,11 +367,11 @@ function HomePage({ navigate, addToCart }) {
             and a corner lap stopwatch so every lap feels calmer, clearer, and faster.
           </h3>
           <div className="hero-actions">
-            <button className="primary-button" type="button" onClick={() => addToCart(products[0])}>
+            <button className="primary-button pill-button" type="button" onClick={() => addToCart(products[0])}>
               Add Velocity Mask
             </button>
             <button className="secondary-button" type="button" onClick={() => navigate('product')}>
-              Explore Product
+              Explore Products
             </button>
           </div>
         </div>
@@ -478,11 +484,11 @@ function ProductPage({ navigate, addToCart }) {
             <span>One-year warranty</span>
           </div>
           <div className="hero-actions">
-            <button class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none rounded-full" type="button" onClick={() => navigate('buy')}>
+            <button className="primary-button pill-button" type="button" onClick={() => addToCart(products[0])}>
               Add Velocity Mask
             </button>
-            <button class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 bg-gray-900 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none rounded-full" type="button" onClick={() => navigate('buy')}>
-              Explore Product
+            <button className="secondary-button" type="button" onClick={() => navigate('checkout')}>
+              View Cart
             </button>
           </div>
         </div>
@@ -497,18 +503,18 @@ function ProductPage({ navigate, addToCart }) {
         <div className="catalog-grid product-grid">
           {products.map((product) => (
             <article className="product-card" key={product.id}>
-              <div className="product-swatch" aria-hidden="true" />
+              <img className="product-image" src={product.image} alt={product.name} />
               <p>{product.badge}</p>
               <h2>{product.name}</h2>
               <span>{product.category}</span>
               <span>{product.description}</span>
               <strong>{formatCurrency(product.price)}</strong>
               <div className="product-card-actions">
-                <button className="primary-button" type="button" onClick={() => addToCart(product)}>
-                  Add to Cart
+                <button className="primary-button pill-button" type="button" onClick={() => addToCart(product)}>
+                  Add to cart
                 </button>
                 <button className="secondary-button" type="button" onClick={() => navigate(`product/${product.id}`)}>
-                  View Details
+                  View details
                 </button>
               </div>
             </article>
@@ -669,7 +675,7 @@ function ProductDetailPage({ productId, addToCart, navigate }) {
   return (
     <section className="content-page product-detail-page">
       <div className="detail-preview">
-        <div className="detail-preview-swatch" style={{ background: `linear-gradient(135deg, ${selectedColor.hex}, #0A123D)` }} />
+        <img className="detail-preview-image" src={product.image} alt={product.name} />
         <div className="detail-preview-card">
           <p className="eyebrow">{product.category}</p>
           <h1>{product.name}</h1>
@@ -703,10 +709,10 @@ function ProductDetailPage({ productId, addToCart, navigate }) {
           <span>1-year support</span>
         </div>
         <div className="hero-actions">
-          <button className="primary-button" type="button" onClick={() => addToCart({ ...product, color: selectedColor.name })}>
+          <button className="primary-button pill-button" type="button" onClick={() => addToCart({ ...product, color: selectedColor.name })}>
             Add {selectedColor.name} to Cart
           </button>
-          <button className="secondary-button" type="button" onClick={() => navigate('buy')}>
+          <button className="secondary-button" type="button" onClick={() => navigate('checkout')}>
             Go to Cart
           </button>
         </div>
@@ -722,10 +728,10 @@ function ContactPage() {
         <p className="eyebrow">Contact us</p>
         <h1>Questions, partnerships, support, and team orders.</h1>
         <div className="contact-list">
-          <p><strong>Email</strong> hello@simplicity.example</p>
-          <p><strong>Phone</strong> (555) 014-2088</p>
+          <p><strong>Email</strong> smukalla71@gmail.com</p>
+          <p><strong>Phone</strong> (980) 271-0871</p>
           <p><strong>Hours</strong> Monday to Friday, 9 AM to 5 PM ET</p>
-          <p><strong>Location</strong> 82 Harbor Lane, Austin, TX</p>
+          <p><strong>Location</strong>  6600 Davidson Hwy, Concord, NC 28027</p>
         </div>
       </div>
       <form className="contact-form">
@@ -745,39 +751,15 @@ function ContactPage() {
           Message
           <textarea placeholder="Tell us what you need" rows="5" />
         </label>
-        <button className="primary-button" type="submit">Send Message</button>
+        <button className="primary-button pill-button" type="submit">Send Message</button>
       </form>
     </section>
   );
 }
 
-function BuyPage({ cart, addToCart, updateQuantity, navigate, subtotal }) {
-  return (
-    <section className="content-page shop-layout">
-      <div>
-        <p className="eyebrow">Buy page</p>
-        <h1>Shop the Velocity collection.</h1>
-        <div className="catalog-grid">
-          {products.map((product) => (
-            <article className="product-card" key={product.id}>
-              <div className="product-swatch" aria-hidden="true" />
-              <p>{product.badge}</p>
-              <h2>{product.name}</h2>
-              <span>{product.description}</span>
-              <strong>{formatCurrency(product.price)}</strong>
-              <button className="primary-button" type="button" onClick={() => addToCart(product)}>
-                Add to Cart
-              </button>
-            </article>
-          ))}
-        </div>
-      </div>
-      <CartPanel cart={cart} updateQuantity={updateQuantity} navigate={navigate} subtotal={subtotal} />
-    </section>
-  );
-}
 
-function CartPanel({ cart, updateQuantity, navigate, subtotal }) {
+
+function CartPanel({ cart, updateQuantity, navigate, subtotal, showCheckoutButton = true }) {
   const shipping = cart.length ? 7 : 0;
   const tax = subtotal * 0.0825;
   const total = subtotal + shipping + tax;
@@ -818,14 +800,16 @@ function CartPanel({ cart, updateQuantity, navigate, subtotal }) {
         <p><span>Estimated tax</span><strong>{formatCurrency(tax)}</strong></p>
         <p className="grand-total"><span>Total</span><strong>{formatCurrency(total)}</strong></p>
       </div>
-      <button className="primary-button" type="button" disabled={!cart.length} onClick={() => navigate('checkout')}>
-        Checkout
-      </button>
+      {showCheckoutButton ? (
+        <button className="primary-button checkout-button pill-button" type="button" onClick={() => navigate('checkout')} disabled={!cart.length}>
+          Checkout
+        </button>
+      ) : null}
     </aside>
   );
 }
 
-function CheckoutPage({ cart, subtotal, navigate, onPlaceOrder, orderMessage }) {
+function CheckoutPage({ cart, subtotal, navigate, updateQuantity, onPlaceOrder, orderMessage }) {
   const shipping = cart.length ? 7 : 0;
   const tax = subtotal * 0.0825;
   const total = subtotal + shipping + tax;
@@ -876,27 +860,36 @@ function CheckoutPage({ cart, subtotal, navigate, onPlaceOrder, orderMessage }) 
           {orderMessage ? <p className="order-success">{orderMessage}</p> : null}
         </form>
 
-        <aside className="order-summary">
-          <h2>Order summary</h2>
-          {cart.length === 0 ? (
-            <>
-              <p className="empty-cart">Your cart is empty.</p>
-              <button className="secondary-button" type="button" onClick={() => navigate('buy')}>Return to Buy Page</button>
-            </>
-          ) : (
-            <>
-              {cart.map((item) => (
-                <p key={item.id}>
-                  <span>{item.name} x {item.quantity}</span>
-                  <strong>{formatCurrency(item.price * item.quantity)}</strong>
-                </p>
-              ))}
-              <p><span>Shipping</span><strong>{formatCurrency(shipping)}</strong></p>
-              <p><span>Estimated tax</span><strong>{formatCurrency(tax)}</strong></p>
-              <p className="grand-total"><span>Total</span><strong>{formatCurrency(total)}</strong></p>
-            </>
-          )}
-        </aside>
+        <div className="checkout-sidebar">
+          <CartPanel
+            cart={cart}
+            updateQuantity={updateQuantity}
+            navigate={navigate}
+            subtotal={subtotal}
+            showCheckoutButton={false}
+          />
+          <aside className="order-summary">
+            <h2>Order summary</h2>
+            {cart.length === 0 ? (
+              <>
+                <p className="empty-cart">Your cart is empty.</p>
+                <button className="secondary-button" type="button" onClick={() => navigate('product')}>Continue shopping</button>
+              </>
+            ) : (
+              <>
+                {cart.map((item) => (
+                  <p key={item.id}>
+                    <span>{item.name} x {item.quantity}</span>
+                    <strong>{formatCurrency(item.price * item.quantity)}</strong>
+                  </p>
+                ))}
+                <p><span>Shipping</span><strong>{formatCurrency(shipping)}</strong></p>
+                <p><span>Estimated tax</span><strong>{formatCurrency(tax)}</strong></p>
+                <p className="grand-total"><span>Total</span><strong>{formatCurrency(total)}</strong></p>
+              </>
+            )}
+          </aside>
+        </div>
       </div>
     </section>
   );
@@ -971,20 +964,12 @@ function App() {
       {activeRoute === 'contact' && <ContactPage />}
       {activeRoute === 'login' && <LoginPage navigate={navigate} />}
       {activeRoute === 'signup' && <SignupPage navigate={navigate} />}
-      {activeRoute === 'buy' && (
-        <BuyPage
-          cart={cart}
-          addToCart={addToCart}
-          updateQuantity={updateQuantity}
-          navigate={navigate}
-          subtotal={subtotal}
-        />
-      )}
       {activeRoute === 'checkout' && (
         <CheckoutPage
           cart={cart}
           subtotal={subtotal}
           navigate={navigate}
+          updateQuantity={updateQuantity}
           onPlaceOrder={handlePlaceOrder}
           orderMessage={orderMessage}
         />
