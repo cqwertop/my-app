@@ -765,8 +765,8 @@ function ContactPage() {
         <p className="eyebrow">Contact us</p>
         <h1>Questions, partnerships, support, and team orders.</h1>
         <div className="contact-list">
-          <p><strong>Email</strong> smukalla71@gmail.com</p>
-          <p><strong>Phone</strong> (980) 271-0871</p>
+          <p><strong>Email</strong> contactus@simplicity.com</p>
+          <p><strong>Phone</strong> (980) 271-2871</p>
           <p><strong>Hours</strong> Monday to Friday, 9 AM to 5 PM ET</p>
           <p><strong>Location</strong>  6600 Davidson Hwy, Concord, NC 28027</p>
         </div>
