@@ -373,7 +373,7 @@ function HomePage({ navigate, addToCart }) {
         <div className="hero-copy">
           <p className="eyebrow">Ski-goggle inspired swim vision</p>
           <h1 style={{ marginBottom: '0.5rem' }}>Simplicity</h1>
-          <h2>Simply see, simply swim</h2>
+          <h2>Simply see, Simply swim</h2>
           <h3 className="hero-text">
             A wide-vision swim mask with a locking suction seal, attached cap, easy-fit frame,
             and a corner lap stopwatch so every lap feels calmer, clearer, and faster.
@@ -434,9 +434,9 @@ function MissionPage() {
           first dive to the final cooldown.
         </p>
         <div className="mission-points">
-          <span>Clear visibility</span>
-          <span>Fast, secure fit</span>
-          <span>Built for real training</span>
+          <span>Clear Visibility</span>
+          <span>Fast, Secure Fit</span>
+          <span>Built for Real Training</span>
         </div>
       </div>
     </section>
