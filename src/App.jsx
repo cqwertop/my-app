@@ -4,11 +4,11 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import skiGogglesModelUrl from '../ski_goggles.glb?url';
-import pradyumnaPhotoUrl from '../peoplepictures/20220216_.jpg?url';
-import souryaPhotoUrl from '../peoplepictures/Screenshot 2026-06-19 090643.png?url';
-import laasyaPhotoUrl from '../peoplepictures/Screenshot 2026-06-19 090200.png?url';
-import saanviPhotoUrl from '../peoplepictures/Screenshot 2026-06-19 090924.png?url';
-import nedirPhotoUrl from '../peoplepictures/Screenshot 2026-06-19 085619.png?url';
+import pradyumnaPhotoUrl from '../peoplepictures/prady.jpg?url';
+import souryaPhotoUrl from '../peoplepictures/Sourya.png?url';
+import laasyaPhotoUrl from '../peoplepictures/Laasya.png?url';
+import saanviPhotoUrl from '../peoplepictures/Saanvi.png?url';
+import nedirPhotoUrl from '../peoplepictures/Nedir.png?url';
 import credentialsData from './credentials.json';
 import './App.css';
 
