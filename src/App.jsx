@@ -36,7 +36,7 @@ const products = [
     id: 'velocity-pro',
     name: 'Velocity Pro Kit',
     color: 'Cool Sky',
-    price: 71.99,
+    price: 61.99,
     badge: 'Race kit',
     description: 'Velocity Mask with mirrored lens, spare gasket, hard case, and waterproof charging puck.',
     category: 'Performance',
@@ -81,7 +81,7 @@ const products = [
     id: 'open-water-kit',
     name: 'Open Water Kit',
     color: 'Storm Gray',
-    price: 65.99,
+    price: 32.99,
     badge: 'Popular',
     description: 'A travel-ready setup with anti-fog lenses, extra gasket, and secure carry case.',
     category: 'Adventure',
@@ -372,7 +372,7 @@ function HomePage({ navigate, addToCart }) {
         <div className="water-grid" aria-hidden="true" />
         <div className="hero-copy">
           <p className="eyebrow">Ski-goggle inspired swim vision</p>
-          <h1>Simplicity</h1>
+          <h1 style={{ marginBottom: '0.5rem' }}>Simplicity</h1>
           <h2>Simply see, simply swim</h2>
           <h3 className="hero-text">
             A wide-vision swim mask with a locking suction seal, attached cap, easy-fit frame,
