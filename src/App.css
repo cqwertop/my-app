@@ -888,14 +888,16 @@ h1 {
 }
 
 .section-heading {
-  max-width: 900px;
+  max-width: 980px;
 }
 
 .section-heading h1 {
-  max-width: 13ch;
-  font-size: clamp(3rem, 5vw, 5.75rem);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
+  max-width: 14ch;
+  width: 100%;
+  font-size: clamp(3rem, 5.2vw, 6rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  word-spacing: 0.06em;
 }
 
 .section-heading h2,
