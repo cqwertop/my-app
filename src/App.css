@@ -888,12 +888,21 @@ h1 {
 }
 
 .section-heading {
-  max-width: 720px;
+  max-width: 900px;
+}
+
+.section-heading h1 {
+  max-width: 13ch;
+  font-size: clamp(3rem, 5vw, 5.75rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
 }
 
 .section-heading h2,
 .drop-copy h2 {
   font-size: clamp(2.25rem, 5vw, 4.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 
 .feature-grid {
@@ -1090,6 +1099,12 @@ h1 {
   grid-template-columns: 0.95fr 1.05fr;
   gap: 3rem;
   align-items: center;
+}
+
+.product-copy h1 {
+  max-width: 10ch;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
 }
 
 .product-copy p {
