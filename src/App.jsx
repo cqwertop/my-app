@@ -308,7 +308,7 @@ function Header({ activeRoute, cartCount, navigate, searchQuery, setSearchQuery 
   return (
     <header className="site-header">
       <div className="header-inner">
-        <button className="brand" type="button" onClick={() => navigate('home')} aria-label="Simplicity home">
+        <button className="brand" type="button" onClick={() => navigate('home')} aria-label="Simplicity Home">
           <img className="brand-mark" src="/icons.svg" alt="" aria-hidden="true" />
           <span>Simplicity</span>
         </button>
@@ -421,7 +421,7 @@ function MissionPage() {
   return (
     <section className="content-page split-page">
       <div>
-        <p className="eyebrow">Mission statement</p>
+        <p className="eyebrow">Mission Statement</p>
         <h1>Make every swim feel smoother, safer, and more focused.</h1>
       </div>
       <div className="statement-panel">
@@ -447,7 +447,7 @@ function TeamPage() {
   return (
     <section className="content-page">
       <div className="section-heading">
-        <p className="eyebrow">Meet the team</p>
+        <p className="eyebrow">Meet the Team</p>
         <h1>Designed by swimmers, makers, and operations people who like details.</h1>
       </div>
       <div className="team-grid">
@@ -483,7 +483,7 @@ function ProductPage({ navigate, addToCart, searchQuery }) {
     <>
       <section className="content-page product-detail">
         <div className="product-copy">
-          <p className="eyebrow">Product page</p>
+          <p className="eyebrow">Product Page</p>
           <h1>Velocity Mask</h1>
           <p>
             A realistic swim mask concept built around comfort, visibility, and quick setup.
@@ -510,7 +510,7 @@ function ProductPage({ navigate, addToCart, searchQuery }) {
 
       <section className="feature-section">
         <div className="section-heading">
-          <p className="eyebrow">Featured collection</p>
+          <p className="eyebrow">Featured Collection</p>
           <h2>
             {normalizedSearch
               ? `Search results for "${searchQuery.trim()}"`
@@ -842,8 +842,8 @@ function CheckoutPage({ cart, subtotal, navigate, updateQuantity, onPlaceOrder, 
     <section className="content-page checkout-screen">
       <div className="checkout-layout">
         <form className="checkout-form" onSubmit={onPlaceOrder}>
-          <p className="eyebrow">Checkout page</p>
-          <h1>Secure checkout</h1>
+          <p className="eyebrow">Checkout Page</p>
+          <h1>Secure Checkout</h1>
           <div className="form-grid">
             <label>
               Email
@@ -893,11 +893,11 @@ function CheckoutPage({ cart, subtotal, navigate, updateQuantity, onPlaceOrder, 
             showCheckoutButton={false}
           />
           <aside className="order-summary">
-            <h2>Order summary</h2>
+            <h2>Order Summary</h2>
             {cart.length === 0 ? (
               <>
                 <p className="empty-cart">Your cart is empty.</p>
-                <button className="secondary-button pill-button" type="button" onClick={() => navigate('product')}>Continue shopping</button>
+                <button className="secondary-button pill-button" type="button" onClick={() => navigate('product')}>Continue Shopping</button>
               </>
             ) : (
               <>
