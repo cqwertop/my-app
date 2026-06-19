@@ -403,7 +403,7 @@ function HomePage({ navigate, addToCart }) {
         <div className="hero-copy">
           <p className="eyebrow">Ski-goggle inspired swim vision</p>
           <h1 style={{ marginBottom: '0.5rem' }}>Simplicity</h1>
-          <h2>Simply see, Simply swim</h2>
+          <h2>Simply See, Simply Swim</h2>
           <h3 className="hero-text">
             A wide-vision swim mask with a locking suction seal, attached cap, easy-fit frame,
             and a corner lap stopwatch so every lap feels calmer, clearer, and faster.
