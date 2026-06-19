@@ -4,6 +4,11 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import skiGogglesModelUrl from '../ski_goggles.glb?url';
+import pradyumnaPhotoUrl from '../peoplepictures/20220216_.jpg?url';
+import souryaPhotoUrl from '../peoplepictures/Screenshot 2026-06-19 090643.png?url';
+import laasyaPhotoUrl from '../peoplepictures/Screenshot 2026-06-19 090200.png?url';
+import saanviPhotoUrl from '../peoplepictures/Screenshot 2026-06-19 090924.png?url';
+import nedirPhotoUrl from '../peoplepictures/Screenshot 2026-06-19 085619.png?url';
 import credentialsData from './credentials.json';
 import './App.css';
 
@@ -117,11 +122,36 @@ const features = [
 ];
 
 const team = [
-  ['Pradyumna Naresh Iytha', 'Marketing and Pitch Design', 'Crafts the brand story, product copy, and investor decks with a focus on clarity and impact.'],
-  ['Sourya Mukalla', 'Web Design and Development', 'Codes the website, online store, and customer accounts with a focus on clarity and performance.'],
-  ['Laasya Bollempalli', 'R&D and Prototyping and Testing', 'Leads product development, testing, and iteration with a focus on real-world performance and reliability.'],
-  ['Saanvi Goudar', 'Business Operations', 'Manages supply chain, customer support, and day-to-day operations with a focus on efficiency and care.'],
-  ['Nedir Fale', 'Brand and Visual Design', 'Shapes the visual identity, packaging, and product aesthetics with a focus on simplicity and cohesion.']
+  {
+    name: 'Pradyumna Naresh Iytha',
+    role: 'CEO, COO, and CBO',
+    bio: 'Pradyumna is a 14-year-old rising 9th grader who enjoys volleyball, swimming, and cricket. As one of the CEOs, he oversees major company decisions, manages company strategy, and helps keep the business running. He also supports operations and brand leadership as COO and CBO.',
+    photo: pradyumnaPhotoUrl,
+  },
+  {
+    name: 'Sourya Mukalla',
+    role: 'CEO, COO, CIO, and CTO',
+    bio: 'Sourya is a 14-year-old rising freshman at NWCHS who enjoys robotics, tennis, and coding. He serves as CEO, COO, CIO, and CTO, helping lead company operations and technology. He also built the company website.',
+    photo: souryaPhotoUrl,
+  },
+  {
+    name: 'Laasya Bollempalli',
+    role: 'CFO and CMO',
+    bio: 'Laasya is always looking for opportunities to learn, grow, and challenge herself. As CFO and CMO, she manages finances, helps lead marketing efforts, and contributes to important business decisions. As an active swimmer, she also provides valuable insights that help shape a product made for swimmers.',
+    photo: laasyaPhotoUrl,
+  },
+  {
+    name: 'Saanvi Goudar',
+    role: 'CMO, CFO, and CBO',
+    bio: 'Saanvi is 14 years old and enjoys art, swimming, and videogames. She serves as CMO, CFO, and CBO, leading marketing while also supporting financial planning, reports, and brand decisions for the company.',
+    photo: saanviPhotoUrl,
+  },
+  {
+    name: 'Nedir Fale',
+    role: 'Brand and Visual Design',
+    bio: 'Shapes the visual identity, packaging, and product aesthetics with a focus on simplicity and cohesion.',
+    photo: nedirPhotoUrl,
+  },
 ];
 
 function formatCurrency(value) {
@@ -451,12 +481,14 @@ function TeamPage() {
         <h1>Designed by swimmers, makers, and operations people who like details.</h1>
       </div>
       <div className="team-grid">
-        {team.map(([name, role, bio]) => (
+        {team.map(({ name, role, bio, photo }) => (
           <article className="team-card" key={name}>
-            <div className="avatar" aria-hidden="true">{name.split(' ').map((part) => part[0]).join('')}</div>
-            <p>{role}</p>
+            <div className="avatar">
+              <img src={photo} alt={name} />
+            </div>
+            <p className="team-role">{role}</p>
             <h2>{name}</h2>
-            <span>{bio}</span>
+            <span className="team-bio">{bio}</span>
           </article>
         ))}
       </div>
