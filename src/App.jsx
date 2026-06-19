@@ -390,20 +390,7 @@ function HomePage({ navigate, addToCart }) {
         <ProductStage />
       </section>
 
-      <section className="stats-band" aria-label="Product highlights">
-        <div>
-          <strong>210 deg</strong>
-          <span>wide mask view</span>
-        </div>
-        <div>
-          <strong>1 pull</strong>
-          <span>easy fit system</span>
-        </div>
-        <div>
-          <strong>01:24</strong>
-          <span>corner lap display</span>
-        </div>
-      </section>
+      
 
       <FeatureSection />
     </>
